@@ -1,0 +1,111 @@
+﻿<Page x:Class="Namordnick.ServiceList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Namordnick"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1200"
+      Title="ServiceList">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Название: " Style="{StaticResource Stblockorder}"/>
+                <TextBlock Name="booksCount" Text="" Style="{StaticResource Stblockorder}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Стоимость: " Style="{StaticResource Stblockorder}"/>
+                    <TextBlock TextDecorations="Strikethrough" Name="booksCost" Text="" Style="{StaticResource Stblockorder}"/>
+                    <TextBlock Name="booksCostWithSale" Text="" Style="{StaticResource Stblockorder}"/>
+                    <TextBlock Text="руб." Style="{StaticResource Stblockorder}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Скидка: " Style="{StaticResource Stblockorder}"/>
+                    <TextBlock Name="Sale" Text="" Style="{StaticResource Stblockorder}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="Bopen" Content="Открыть корзину" Width="150" Margin="10,10,10,10" Click="Bopen_click"/>
+                </StackPanel>
+            </StackPanel>
+            <ListView Name ="LVCelebration" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="523" ScrollViewer.VerticalScrollBarVisibility="Auto" RenderTransformOrigin="0.5,0.5">
+                <ListView.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-0.095"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-0.613"/>
+                    </TransformGroup>
+                </ListView.RenderTransform>
+                <ListView.Background>
+                    <!--<RadialGradientBrush GradientOrigin="0.5,0.5">
+                        <GradientStop Color="MediumVioletRed" Offset="0.6"/>
+                        <GradientStop Color="MediumVioletRed" Offset="0.4"/>
+                        <GradientStop Color="Purple" Offset="1"/>
+                        <GradientStop Color="MediumVioletRed" Offset="0.1"/>
+                        <GradientStop Color="MediumVioletRed" Offset="0.9"/>
+                    </RadialGradientBrush>-->
+                    <SolidColorBrush Color="Gray" Opacity="0"/>
+                </ListView.Background>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Azure" BorderThickness="2" Background="{Binding ColorDate}">
+
+                            <StackPanel Orientation="Horizontal" Width="1200">
+                                <StackPanel Orientation="Vertical">
+                                    <Image Source="{Binding picture}" Width="150" Height="150"></Image>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <Grid Width="1000">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Название: " Style="{StaticResource Stblockorder}"/>
+                                                <TextBlock Text="{Binding title}" Style="{StaticResource Stblockorder}"/>
+                                                <TextBlock Text=" | " Style="{StaticResource Stblockorder}"/>
+                                                <TextBlock Text="Жанр: " Style="{StaticResource Stblockorder}"/>
+                                                <TextBlock Text="{Binding genre}" Style="{StaticResource Stblockorder}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Автор: " Style="{StaticResource Stblockorder}"/>
+                                                <TextBlock Text="{Binding author}" Style="{StaticResource Stblockorder}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Цена: " Style="{StaticResource Stblockorder}"/>
+                                                <TextBlock Text="{Binding cost}" Style="{StaticResource Stblockorder}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Количество в магазине: " Style="{StaticResource Stblockorder}"/>
+                                                <TextBlock Text="{Binding СountInShop}" Style="{StaticResource Stblockorder}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Количество на складе: " Style="{StaticResource Stblockorder}"/>
+                                                <TextBlock Text="{Binding CountInSklad}" Style="{StaticResource Stblockorder}"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Описание: " Style="{StaticResource Stblockorder}"/>
+                                                <TextBlock Text="{Binding description}" Style="{StaticResource Stblockorder}" TextWrapping="Wrap" Width="800"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding MinCostForAgent}" Style="{StaticResource Stblockorder}" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding ArticleNumber}" TextDecorations="{Binding IsDiscount}"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Height="34">
+                <Button Name="Badd" Content="Добавить в корзину" Width="150" Margin="10,10,10,10" Click="Badd_click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
